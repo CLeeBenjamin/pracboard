@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import './index.css';
 
 
-
-
-function Board() {
+function Mainboard() {
   const board = [];
   const [catPos, setCatPos] = useState([3,3]) // [x,y]
 
@@ -47,27 +45,30 @@ function Board() {
       const waterBowl = isTopRight ? <div className="water-bowl" onKeyDown={handleKeyDown} /> : null;
       const scratchPad = isBottomLeft ? <div className="scratch-pad" /> : null;
       const cat = center ? <div className="cat" />  : null;
+     
       row.push(
         <div
           key={squareKey}
           className={squareClass}
           onClick={() => handleClick(i, j)}>
-
           {waterBowl}
           {scratchPad}
           {cat}
 
         </div>
       );
+      
     }
     board.push(<div key={i} className="row">{row}</div>);
   }
+
   return (
-    <div className="chess-board" onKeyDown={handleKeyDown} tabIndex="0">
+    <div className="board" onKeyDown={handleKeyDown} tabIndex="0">
       {board}
-      
     </div>
   );
 }
 
-export default Board;
+
+
+export default Mainboard;
